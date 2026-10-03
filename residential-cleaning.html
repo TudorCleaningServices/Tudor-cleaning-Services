@@ -263,6 +263,81 @@
         padding:35px 22px
       }
     }
+    .menu-toggle{
+  background:var(--teal);
+  color:white;
+  border:0;
+  width:48px;
+  height:48px;
+  border-radius:12px;
+  font-size:28px;
+  line-height:1;
+  cursor:pointer;
+  box-shadow:0 8px 22px rgba(8,127,136,.2);
+}
+
+.side-menu{
+  position:fixed;
+  top:0;
+  right:-360px;
+  width:340px;
+  max-width:88%;
+  height:100vh;
+  background:white;
+  z-index:1000;
+  padding:25px;
+  box-shadow:-10px 0 35px rgba(7,59,76,.18);
+  transition:right .3s ease;
+  overflow-y:auto;
+}
+
+.side-menu.open{
+  right:0;
+}
+
+.side-menu a{
+  display:block;
+  padding:14px 8px;
+  border-bottom:1px solid #e3edef;
+  color:var(--dark);
+  font-weight:700;
+}
+
+.side-menu a:hover{
+  color:var(--teal);
+}
+
+.menu-close{
+  display:block;
+  margin-left:auto;
+  background:none;
+  border:0;
+  font-size:36px;
+  color:var(--dark);
+  cursor:pointer;
+}
+
+.menu-title{
+  color:var(--teal);
+  font-weight:800;
+  font-size:1.05rem;
+  margin:5px 0 20px;
+  padding-bottom:15px;
+  border-bottom:2px solid #e3edef;
+}
+
+.menu-call{
+  margin-top:20px;
+  background:var(--teal);
+  color:white !important;
+  text-align:center;
+  border-radius:999px;
+  border:0 !important;
+}
+
+.menu-call:hover{
+  color:white !important;
+}
   </style>
 </head>
 
@@ -276,12 +351,33 @@
     </a>
 
     <nav>
- <a href="index.html">Home</a>
-      <a href="index.html#services">Services</a>
-      <a href="index.html#commercial">Commercial</a>
-      <a href="residential-cleaning.html">Residential</a>
-      <a href="index.html#about">About</a>
-      <a href="index.html#contact">Contact</a>
+      <button class="menu-toggle" onclick="openMenu()" aria-label="Open menu">
+  ☰
+</button>
+
+<div id="sideMenu" class="side-menu">
+  <button class="menu-close" onclick="closeMenu()" aria-label="Close menu">
+    ×
+  </button>
+
+  <div class="menu-title">TUDOR CLEANING SERVICES</div>
+
+  <a href="index.html">🏠 Home</a>
+  <a href="index.html#services">✨ Services</a>
+  <a href="residential-cleaning.html">🏠 Residential Cleaning</a>
+  <a href="deep-cleaning.html">✨ Deep Cleaning</a>
+  <a href="recurring-cleaning.html">🔄 Recurring Cleaning</a>
+  <a href="move-in-move-out-cleaning.html">📦 Move-In & Move-Out</a>
+  <a href="commercial-cleaning.html">🏢 Commercial Cleaning</a>
+  <a href="specialty-event-cleaning.html">✨ Specialty & Event Cleaning</a>
+  <a href="index.html#about">ℹ️ About</a>
+  <a href="index.html#contact">📞 Contact</a>
+
+  <a class="menu-call" href="tel:9033689733">
+    Call / Text 903-368-9733
+  </a>
+</div>
+ 
     </nav>
 
     <a class="btn" href="tel:9033689733">Call / Text</a>
@@ -504,6 +600,15 @@
 
   </div>
 </footer>
+<script>
+function openMenu(){
+  document.getElementById("sideMenu").classList.add("open");
+}
 
+function closeMenu(){
+  document.getElementById("sideMenu").classList.remove("open");
+}
+</script>
+  
 </body>
 </html>
