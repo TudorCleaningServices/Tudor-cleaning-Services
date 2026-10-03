@@ -16,63 +16,217 @@
       --soft:#f4fafb;
     }
 
-    *{box-sizing:border-box}
+    *{
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
 
     body{
       margin:0;
       font-family:Arial,Helvetica,sans-serif;
       color:var(--ink);
       background:var(--soft);
-      line-height:1.6
+      line-height:1.6;
     }
 
     a{
       color:inherit;
-      text-decoration:none
+      text-decoration:none;
     }
 
     .container{
       width:min(1100px,92%);
-      margin:auto
+      margin:auto;
     }
+
+    /* HEADER */
 
     header{
       position:sticky;
       top:0;
-      z-index:10;
-      background:rgba(255,255,255,.96);
+      z-index:900;
+      background:rgba(255,255,255,.97);
       backdrop-filter:blur(8px);
-      border-bottom:1px solid #d9e5e7
+      border-bottom:1px solid #d9e5e7;
     }
 
-    .nav{
+    .header-inner{
       min-height:72px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:20px
+      gap:15px;
     }
 
     .brand{
       font-weight:800;
       letter-spacing:.04em;
       color:var(--dark);
-      font-size:1.15rem
+      font-size:1.05rem;
+      flex:1;
     }
 
     .brand span{
-      color:var(--teal)
+      color:var(--teal);
     }
 
-    nav{
+    /* HAMBURGER */
+
+    .menu-toggle{
       display:flex;
-      gap:22px;
-      flex-wrap:wrap;
-      font-size:.95rem
+      align-items:center;
+      justify-content:center;
+      width:48px;
+      height:48px;
+      background:var(--teal);
+      color:white;
+      border:0;
+      border-radius:12px;
+      font-size:28px;
+      line-height:1;
+      cursor:pointer;
+      box-shadow:0 8px 22px rgba(8,127,136,.2);
+      flex-shrink:0;
     }
 
-    nav a:hover{
-      color:var(--teal)
+    .header-call{
+      display:inline-block;
+      background:var(--teal);
+      color:white;
+      padding:11px 17px;
+      border-radius:999px;
+      font-weight:700;
+      white-space:nowrap;
+    }
+
+    /* SIDE MENU */
+
+    .menu-overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.35);
+      opacity:0;
+      visibility:hidden;
+      transition:opacity .3s ease;
+      z-index:1000;
+    }
+
+    .menu-overlay.open{
+      opacity:1;
+      visibility:visible;
+    }
+
+    .side-menu{
+      position:fixed;
+      top:0;
+      right:-390px;
+      width:360px;
+      max-width:88%;
+      height:100vh;
+      background:white;
+      z-index:1100;
+      padding:25px;
+      overflow-y:auto;
+      box-shadow:-12px 0 35px rgba(7,59,76,.2);
+      transition:right .3s ease;
+    }
+
+    .side-menu.open{
+      right:0;
+    }
+
+    .menu-close{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-left:auto;
+      width:44px;
+      height:44px;
+      background:none;
+      border:0;
+      color:var(--dark);
+      font-size:38px;
+      cursor:pointer;
+    }
+
+    .menu-title{
+      color:var(--teal);
+      font-weight:800;
+      font-size:1.05rem;
+      margin:5px 0 20px;
+      padding-bottom:15px;
+      border-bottom:2px solid #e3edef;
+    }
+
+    .side-menu a{
+      display:block;
+      padding:13px 8px;
+      border-bottom:1px solid #e3edef;
+      color:var(--dark);
+      font-weight:700;
+    }
+
+    .side-menu a:hover{
+      color:var(--teal);
+    }
+
+    .menu-call{
+      margin-top:20px;
+      background:var(--teal);
+      color:white !important;
+      text-align:center;
+      border-radius:999px;
+      border:0 !important;
+      padding:14px 10px !important;
+    }
+
+    /* HERO */
+
+    .hero{
+      padding:75px 0 65px;
+      background:linear-gradient(135deg,#fff 0%,#edf9f9 100%);
+    }
+
+    .hero-content{
+      max-width:820px;
+      margin:auto;
+      text-align:center;
+    }
+
+    .kicker{
+      color:var(--teal);
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-size:.82rem;
+    }
+
+    h1{
+      font-size:clamp(2.5rem,6vw,4.4rem);
+      line-height:1.05;
+      margin:14px 0 20px;
+      color:var(--dark);
+    }
+
+    h1 span{
+      color:var(--teal);
+    }
+
+    .hero p{
+      font-size:1.15rem;
+      max-width:700px;
+      margin:0 auto;
+    }
+
+    .actions{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:28px;
     }
 
     .btn{
@@ -82,83 +236,41 @@
       padding:13px 21px;
       border-radius:999px;
       font-weight:700;
-      box-shadow:0 8px 22px rgba(8,127,136,.2)
-    }
-
-    .hero{
-      padding:75px 0 65px;
-      background:linear-gradient(135deg,#fff 0%,#edf9f9 100%)
-    }
-
-    .hero-content{
-      max-width:820px;
-      margin:auto;
-      text-align:center
-    }
-
-    .kicker{
-      color:var(--teal);
-      font-weight:800;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      font-size:.82rem
-    }
-
-    h1{
-      font-size:clamp(2.5rem,6vw,4.4rem);
-      line-height:1.05;
-      margin:14px 0 20px;
-      color:var(--dark)
-    }
-
-    h1 span{
-      color:var(--teal)
-    }
-
-    .hero p{
-      font-size:1.15rem;
-      max-width:700px;
-      margin:0 auto
-    }
-
-    .actions{
-      display:flex;
-      justify-content:center;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top:28px
+      box-shadow:0 8px 22px rgba(8,127,136,.2);
     }
 
     .btn.light{
       background:white;
       color:var(--teal);
-      border:1px solid var(--teal)
+      border:1px solid var(--teal);
     }
 
+    /* SECTIONS */
+
     section{
-      padding:70px 0
+      padding:70px 0;
     }
 
     .section-head{
       text-align:center;
       max-width:720px;
-      margin:0 auto 40px
+      margin:0 auto 40px;
     }
 
     .section-head h2{
       font-size:2.25rem;
       color:var(--dark);
-      margin:8px 0 12px
+      margin:8px 0 12px;
     }
 
     .section-head p{
-      margin:0
+      margin:0;
     }
 
     .cards{
       display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:22px
+      gap:22px;
     }
 
     .card{
@@ -166,42 +278,42 @@
       border:1px solid #dce8ea;
       border-radius:22px;
       padding:28px;
-      box-shadow:0 10px 30px rgba(7,59,76,.06)
+      box-shadow:0 10px 30px rgba(7,59,76,.06);
     }
 
     .icon{
-      font-size:2rem
+      font-size:2rem;
     }
 
     .card h3{
       color:var(--dark);
-      margin:10px 0
+      margin:10px 0;
     }
 
     .card ul{
       padding-left:20px;
-      margin-bottom:0
+      margin-bottom:0;
     }
 
     .alt{
-      background:white
+      background:white;
     }
 
     .two{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:25px
+      gap:25px;
     }
 
     .checklist{
       list-style:none;
-      padding:0
+      padding:0;
     }
 
     .checklist li{
       margin:13px 0;
       padding-left:30px;
-      position:relative
+      position:relative;
     }
 
     .checklist li:before{
@@ -209,179 +321,139 @@
       position:absolute;
       left:0;
       color:var(--teal);
-      font-weight:900
+      font-weight:900;
     }
+
+    /* CTA */
 
     .quote{
       background:var(--dark);
       color:white;
       border-radius:30px;
       padding:48px;
-      text-align:center
+      text-align:center;
     }
 
     .quote h2{
       font-size:2.3rem;
-      margin:0 0 12px
+      margin:0 0 12px;
     }
 
     .quote p{
       max-width:650px;
-      margin:0 auto 24px
+      margin:0 auto 24px;
     }
+
+    /* FOOTER */
 
     footer{
       background:#052d3a;
       color:white;
       padding:30px 0;
-      text-align:center
+      text-align:center;
     }
 
     .small{
       font-size:.9rem;
-      opacity:.85
+      opacity:.85;
     }
 
+    /* MOBILE */
+
     @media(max-width:800px){
-      .two{
-        grid-template-columns:1fr
+
+      .header-call{
+        display:none;
       }
 
-      .cards{
-        grid-template-columns:1fr
+      .brand{
+        font-size:.95rem;
       }
 
       .hero{
-        padding-top:50px
+        padding-top:50px;
       }
 
       section{
-        padding:55px 0
+        padding:55px 0;
+      }
+
+      .cards{
+        grid-template-columns:1fr;
+      }
+
+      .two{
+        grid-template-columns:1fr;
       }
 
       .quote{
-        padding:35px 22px
+        padding:35px 22px;
+      }
+
+      .side-menu{
+        width:330px;
       }
     }
-    .menu-toggle{
-      display:block;
-  background:var(--teal);
-  color:white;
-  border:0;
-  width:48px;
-  height:48px;
-  border-radius:12px;
-  font-size:28px;
-  line-height:1;
-  cursor:pointer;
-  box-shadow:0 8px 22px rgba(8,127,136,.2);
-}
-
-.side-menu{
-  position:fixed;
-  top:0;
-  right:-360px;
-  width:340px;
-  max-width:88%;
-  height:100vh;
-  background:white;
-  z-index:1000;
-  padding:25px;
-  box-shadow:-10px 0 35px rgba(7,59,76,.18);
-  transition:right .3s ease;
-  overflow-y:auto;
-}
-
-.side-menu.open{
-  right:0;
-}
-
-.side-menu a{
-  display:block;
-  padding:14px 8px;
-  border-bottom:1px solid #e3edef;
-  color:var(--dark);
-  font-weight:700;
-}
-
-.side-menu a:hover{
-  color:var(--teal);
-}
-
-.menu-close{
-  display:block;
-  margin-left:auto;
-  background:none;
-  border:0;
-  font-size:36px;
-  color:var(--dark);
-  cursor:pointer;
-}
-
-.menu-title{
-  color:var(--teal);
-  font-weight:800;
-  font-size:1.05rem;
-  margin:5px 0 20px;
-  padding-bottom:15px;
-  border-bottom:2px solid #e3edef;
-}
-
-.menu-call{
-  margin-top:20px;
-  background:var(--teal);
-  color:white !important;
-  text-align:center;
-  border-radius:999px;
-  border:0 !important;
-}
-
-.menu-call:hover{
-  color:white !important;
-}
   </style>
 </head>
 
 <body>
 
 <header>
-  <div class="container nav">
+  <div class="container header-inner">
 
     <a class="brand" href="index.html">
       ✦ TUDOR <span>CLEANING SERVICES</span>
     </a>
 
-      <button class="menu-toggle" onclick="openMenu()" aria-label="Open menu">
-  ☰
-</button>
+    <a class="header-call" href="tel:9033689733">
+      Call / Text
+    </a>
+
+    <button class="menu-toggle" onclick="openMenu()" aria-label="Open menu">
+      ☰
+    </button>
+
+  </div>
+</header>
+
+<div id="menuOverlay" class="menu-overlay" onclick="closeMenu()"></div>
 
 <div id="sideMenu" class="side-menu">
+
   <button class="menu-close" onclick="closeMenu()" aria-label="Close menu">
     ×
   </button>
 
-  <div class="menu-title">TUDOR CLEANING SERVICES</div>
+  <div class="menu-title">
+    TUDOR CLEANING SERVICES
+  </div>
 
   <a href="index.html">🏠 Home</a>
+
   <a href="index.html#services">✨ Services</a>
+
   <a href="residential-cleaning.html">🏠 Residential Cleaning</a>
+
   <a href="deep-cleaning.html">✨ Deep Cleaning</a>
+
   <a href="recurring-cleaning.html">🔄 Recurring Cleaning</a>
+
   <a href="move-in-move-out-cleaning.html">📦 Move-In & Move-Out</a>
+
   <a href="commercial-cleaning.html">🏢 Commercial Cleaning</a>
+
   <a href="specialty-event-cleaning.html">✨ Specialty & Event Cleaning</a>
+
   <a href="index.html#about">ℹ️ About</a>
+
   <a href="index.html#contact">📞 Contact</a>
 
   <a class="menu-call" href="tel:9033689733">
     Call / Text 903-368-9733
   </a>
+
 </div>
-
-    <a class="btn" href="tel:9033689733">Call / Text</a>
-
-  </div>
-</header>
 
 <main>
 
@@ -401,20 +473,26 @@
     </p>
 
     <div class="actions">
-      <a class="btn" href="tel:9033689733">Call / Text for a Quote</a>
-      <a class="btn light" href="index.html#contact">Contact Tudor Cleaning Services</a>
+      <a class="btn" href="tel:9033689733">
+        Call / Text for a Quote
+      </a>
+
+      <a class="btn light" href="index.html#contact">
+        Contact Tudor Cleaning Services
+      </a>
     </div>
 
   </div>
 </section>
-
 
 <section>
   <div class="container">
 
     <div class="section-head">
       <div class="kicker">Cleaning That Fits Your Home</div>
+
       <h2>Residential Cleaning Services</h2>
+
       <p>
         Whether you need regular maintenance or a detailed one-time clean,
         Tudor Cleaning Services can help keep your home feeling fresh,
@@ -426,10 +504,13 @@
 
       <div class="card">
         <div class="icon">🏠</div>
+
         <h3>Standard House Cleaning</h3>
+
         <p>
           Routine cleaning to help keep your home looking and feeling its best.
         </p>
+
         <ul>
           <li>Kitchen cleaning</li>
           <li>Bathroom cleaning</li>
@@ -441,10 +522,13 @@
 
       <div class="card">
         <div class="icon">✨</div>
+
         <h3>Detailed Cleaning</h3>
+
         <p>
           Extra attention to the areas that need a little more care.
         </p>
+
         <ul>
           <li>Baseboards</li>
           <li>Detailed kitchens and bathrooms</li>
@@ -456,10 +540,13 @@
 
       <div class="card">
         <div class="icon">💎</div>
+
         <h3>Recurring Cleaning</h3>
+
         <p>
           Keep your home maintained with a schedule that works for you.
         </p>
+
         <ul>
           <li>Weekly cleaning</li>
           <li>Biweekly cleaning</li>
@@ -474,19 +561,21 @@
   </div>
 </section>
 
-
 <section class="alt">
   <div class="container">
 
     <div class="section-head">
       <div class="kicker">More Ways We Can Help</div>
+
       <h2>Cleaning for Every Stage of Homeownership</h2>
     </div>
 
     <div class="two">
 
       <div class="card">
+
         <h3>Move-In & Move-Out Cleaning</h3>
+
         <ul class="checklist">
           <li>Empty-home cleaning</li>
           <li>Kitchen and appliance cleaning</li>
@@ -496,10 +585,13 @@
           <li>Baseboards</li>
           <li>Final detail cleaning</li>
         </ul>
+
       </div>
 
       <div class="card">
+
         <h3>Deep & Spring Cleaning</h3>
+
         <ul class="checklist">
           <li>First-time deep cleans</li>
           <li>Seasonal cleaning</li>
@@ -509,6 +601,7 @@
           <li>Organization and light decluttering</li>
           <li>Hard-to-reach areas</li>
         </ul>
+
       </div>
 
     </div>
@@ -516,55 +609,71 @@
   </div>
 </section>
 
-
 <section>
+
   <div class="container">
 
     <div class="section-head">
+
       <div class="kicker">Residential Properties</div>
+
       <h2>Cleaning for Different Types of Homes</h2>
+
       <p>
         Every home is different, so cleaning services can be tailored to
         your space and your needs.
       </p>
+
     </div>
 
     <div class="cards">
 
       <div class="card">
+
         <h3>Homes</h3>
+
         <p>
           Residential cleaning for houses of different sizes and layouts.
         </p>
+
       </div>
 
       <div class="card">
+
         <h3>Apartments & Condos</h3>
+
         <p>
           Cleaning services designed around smaller residential spaces and
           apartment or condo living.
         </p>
+
       </div>
 
       <div class="card">
+
         <h3>Rental Properties</h3>
+
         <p>
           Cleaning for rental properties, turnovers, and keeping spaces
           ready for the next guest or resident.
         </p>
+
       </div>
 
     </div>
 
   </div>
+
 </section>
 
-
 <section class="alt">
+
   <div class="container">
 
     <div class="quote">
+
       <h2>Ready for a Cleaner Home?</h2>
+
       <p>
         Let Tudor Cleaning Services take cleaning off your to-do list.
         Contact us to discuss your home and the cleaning service that fits
@@ -574,15 +683,17 @@
       <a class="btn" href="tel:9033689733">
         Call or Text 903-368-9733
       </a>
+
     </div>
 
   </div>
+
 </section>
 
 </main>
 
-
 <footer>
+
   <div class="container">
 
     <strong>Tudor Cleaning Services</strong>
@@ -597,16 +708,22 @@
     </p>
 
   </div>
-</footer>
-<script>
-function openMenu(){
-  document.getElementById("sideMenu").classList.add("open");
-}
 
-function closeMenu(){
-  document.getElementById("sideMenu").classList.remove("open");
-}
+</footer>
+
+<script>
+  function openMenu(){
+    document.getElementById("sideMenu").classList.add("open");
+    document.getElementById("menuOverlay").classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeMenu(){
+    document.getElementById("sideMenu").classList.remove("open");
+    document.getElementById("menuOverlay").classList.remove("open");
+    document.body.style.overflow = "";
+  }
 </script>
-  
+
 </body>
 </html>
